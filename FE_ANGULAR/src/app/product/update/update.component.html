@@ -1,0 +1,102 @@
+<div class="container">
+  <h2 class="text-center my-3">Add Product</h2>
+  <form [formGroup]="productFormPost" (ngSubmit)="handleSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="image">Image</label> <br>
+        <img class="thumbnail" style="width: 120px;" src="{{imgUrl}}" alt="">
+        <input type="text" class="form-control" formControlName="image" id="image" placeholder="Enter your image...">
+        <div class="box-message"
+          *ngIf="productFormPost.controls.image.invalid && (productFormPost.controls.image.touched || productFormPost.controls.image.dirty)">
+          <div *ngIf="productFormPost.controls.image.errors">
+
+            <div *ngIf="productFormPost.controls.image.errors['required']" style="color: red;">
+              image không được bỏ trống!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Enter your name...">
+      <div class="box-message"
+        *ngIf="productFormPost.controls.name.invalid && (productFormPost.controls.name.touched || productFormPost.controls.name.dirty)">
+        <div *ngIf="productFormPost.controls.name.errors">
+
+          <div *ngIf="productFormPost.controls.name.errors['required']" style="color: red;">
+            name không được bỏ trống!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" formControlName="price" id="price" placeholder="Enter your price...">
+        <div class="box-message"
+          *ngIf="productFormPost.controls.price.invalid && (productFormPost.controls.price.touched || productFormPost.controls.price.dirty)">
+          <div *ngIf="productFormPost.controls.price.errors">
+
+            <div *ngIf="productFormPost.controls.price.errors['required']" style="color: red;">
+              price không được bỏ trống!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="sale_price">Sale Price</label>
+        <input type="text" class="form-control" formControlName="sale_price" id="sale_price"
+          placeholder="Enter your sale_price...">
+        <div class="box-message"
+          *ngIf="productFormPost.controls.sale_price.invalid && (productFormPost.controls.sale_price.touched || productFormPost.controls.sale_price.dirty)">
+          <div *ngIf="productFormPost.controls.sale_price.errors">
+
+            <div *ngIf="productFormPost.controls.sale_price.errors['required']" style="color: red;">
+              sale_price không được bỏ trống!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category_id">Category</label>
+      <select class="form-control" formControlName="category_id" id="category_id">
+        <option value="">--Danh Mục Sản Phẩm--</option>
+        <option *ngFor="let item of data" value="{{ item.categoryId }}">{{ item.name }}</option>
+      </select>
+
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="status">Status</label>
+        <select class="form-control" formControlName="status" id="status">
+          <option value="1">Show</option>
+          <option value="0">Hide</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="date">Date Product</label>
+        <input type="text" class="form-control" formControlName="date" id="date"
+          placeholder="Enter your date...">
+        <div class="box-message"
+          *ngIf="productFormPost.controls.date.invalid && (productFormPost.controls.date.touched || productFormPost.controls.date.dirty)">
+          <div *ngIf="productFormPost.controls.date.errors">
+            <div *ngIf="productFormPost.controls.date.errors['required']" style="color: red;">
+              date không được bỏ trống!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" *ngIf="productFormPost.valid" class="btn btn-primary">Submit</button>
+    <button type="submit" *ngIf="!productFormPost.valid" disabled class="btn btn-primary">Submit</button>
+  </form>
+</div>

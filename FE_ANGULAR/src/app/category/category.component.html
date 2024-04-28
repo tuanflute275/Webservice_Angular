@@ -1,0 +1,19 @@
+<div class="container my-3">
+  <h2 class="text-center my-5">List Category</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Id</th>
+        <th class="text-center">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data | paginate:{itemsPerPage: 10, currentPage:page}">
+        <td class="text-center">{{ item.categoryId }}</td>
+        <td class="text-center">{{ item.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls class="pagination" (pageChange)="page = $event" previousLabel=""
+    nextLabel=""></pagination-controls>
+</div>
